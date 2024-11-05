@@ -3,9 +3,25 @@ h1, h2, p {
 }
 
 body {
-    background-color: burlywood;
+    background-image: url(https://cdn.freecodecamp.org/curriculum/css-cafe/beans.jpg);
 }
 
-#menu {
-    width: 300px;
+.menu {
+    width: 80%px;
+    background-color: burlywood; /* putting the background olor in here with #menu turns that area that color only */
+    margin-right: auto;
+    margin-left: auto;
 }
+
+.flavor, .dessert {
+    text-align: left;
+    width: 75%;
+}
+
+
+.price { 
+    text-align: right;
+    width: 25%;
+}
+
+.item p{display: inline-block;}
