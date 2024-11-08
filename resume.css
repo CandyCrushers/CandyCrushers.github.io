@@ -1,3 +1,21 @@
 body {
     background-color: white;
 }
+
+h1 { 
+    text-align: center;
+    font-size: 500%;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.jobtitle {
+    font-size: 250%;
+}
+
+h2 { 
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 200%;
+}
+
