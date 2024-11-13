@@ -9,15 +9,15 @@ h1 {
 }
 
 .red{
-    background: rgb(255,0,0);
-}
+    background: linear-gradient(180deg, rgb(122,74,14)0%, rgb(245,62,113)50%, rgb(162,27,27)100%);    
+    }
 
 .blue{
     background-color: hsl(240, 100%, 50%)
 }
 
 .green{
-    background-color: #007F00
+    background: linear-gradient(180deg, #55680D, #71F53E, #116C31 ) 
 }
 
 .container{
