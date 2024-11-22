@@ -1,13 +1,15 @@
 body {
-    background-color: white;
+    background-color: #EDE8F5;
 }
 
-h1 { 
+#bigname { 
     text-align: center;
     font-size: 500%;
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;
     font-weight: bold;
+    position: relative;
+    left: 140px;
 }
 
 .jobtitle {
@@ -19,3 +21,19 @@ h2 {
     font-size: 200%;
 }
 
+#Github {
+    width: 100px;
+    height: auto;
+    position: relative;
+    top: -525px;
+    left: 30px;
+    
+}
+
+#aboutme {
+    background-color: #3d52a0;
+    border: 2px black;
+    border-radius: 25px;
+    padding: 10px;
+    overflow: hidden;
+}
