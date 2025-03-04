@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #1a1a1a;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Navbar */
+
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.9);
+            padding: 1rem;
+            z-index: 100;
+        }
+
+        #navbar ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        #navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 2rem;
+            font-size: 1.2rem;
+            position: relative; /* For underline effect */
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        #navbar a:hover {
+            color: #00ccff;
+            transform: scale(1.05); /* Slight scale-up */
+        }
+
+        #navbar a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #00ccff;
+            transition: width 0.3s ease;
+        }
+
+        #navbar a:hover::after {
+            width: 100%; /* Glowing underline grows on hover */
+        }
+        /* Welcome Section */
+        #welcome-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #welcome-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 204, 255, 0.2) 0%, rgba(26, 26, 26, 0.8) 70%);
+            animation: pulse 6s infinite ease-in-out;
+            z-index: -1;
+            transition: background-position 0.1s ease; /* Smooth shift */
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        #welcome-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        #welcome-section p {
+            font-size: 1.5rem;
+            color: #ccc;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* About Me Section */
+        #about {
+            padding: 5rem 2rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        #about.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg, #00ccff, #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent
+        }
+
+        #about p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        #resume-link {
+            color: #00ccff;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        /* Certifications Section */
+        #certifications {
+            padding: 5rem 2rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        #certifications.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #certifications h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg, #00ccff, #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-tile {
+            background: #2a2a2a;
+            padding: 1rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .project-tile:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 204, 255, 0.5); /* Cyan glow */
+        }
+
+        .project-tile img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        /* Languages Section */
+        #languages {
+            padding: 5rem 2rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        #languages.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #languages h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg, #00ccff, #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent
+        }
+
+        .lang-grid {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .lang-grid img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .lang-grid img:hover {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        /* Social Media Section */
+        #social {
+            padding: 5rem 2rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        #social.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #social h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg, #00ccff, #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-links a {
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+
+        .social-links img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        #cursor {
+            display: inline-block;
+            font-weight: 100;
+            color: #00ccff; /* Bright cyan */
+            font-size: 3.5rem; /* Matches h1 default size */
+            line-height: 1;
+            margin-left: 2px;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {opacity: 1;}
+            50% { opacity: 0;}
+            
+        }
+
+        /* Background Floating Elements */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #navbar a {
+                margin: 0.5rem 0;
+            }
+
+            #welcome-section h1 {
+                font-size: 2.5rem;
+            }
+
+            #welcome-section p {
+                font-size: 1.2rem;
+            }
+
+            .lang-grid img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .social-links img {
+                width: 40px;
+                height: 40px;
+            }
+            
+            #cursor {
+                font-size: 2.5rem;
+        }
+    }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav id="navbar">
+        <ul>
+            <li><a href="#welcome-section">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#languages">Languages</a></li>
+            <li><a href="#social">Social</a></li>
+        </ul>
+    </nav>
+
+    <!-- Welcome Section -->
+    <section id="welcome-section">
+        <h1><span id="typed-text"></span><span id="cursor">|</span></h1>
+        <p>Building the future, one line of code at a time.</p>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I’m Adam, an enthusiastic and driven programmer with a deep passion for crafting solutions through code. My journey in programming began in high school, where I discovered a love for the craft that has only grown stronger with every project I tackle. Over those years, I’ve immersed myself in the world of coding, finding joy in every challenge—from debugging complex algorithms to watching lines of logic come to life.
+
+            I’m fueled by a relentless curiosity and a dream to master the art of programming. My aspirations reach beyond the basics: I aim to push the boundaries of what I can achieve, constantly learning and refining my skills to become the best developer I can be. Currently, I’m set to attend Chandler-Gilbert Community College (CGCC), where I’ll pursue a Bachelor’s degree in Machine Learning and Artificial Intelligence—a field that excites me with its potential to shape the future. I’m particularly proud to be part of the inaugural wave of students aiming to graduate with this cutting-edge degree, a milestone that reflects my commitment to innovation and excellence.
+            
+            For me, programming isn’t just a skill—it’s a way to express creativity, solve problems, and build something meaningful. I’m excited to share my journey with you and to continue growing as a coder, one line at a time.</p>
+        <a href="[Your Resume Link]" target="_blank" id="resume-link">View My Resume</a>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <div class="cert-grid">
+            <!-- Certification Slot 1 -->
+            <div class="project-tile">
+                <img src="python.png" alt="Python">
+            </div>
+            <!-- Certification Slot 2 -->
+            <div class="project-tile">
+                <img src="htmlcss.png" alt="HTML-CSS">
+            </div>
+            <!-- Certification Slot 3 -->
+            <div class="project-tile">
+                <img src="cpp.png" alt="C++">
+            </div>
+            <!-- To add more certifications, copy-paste the <div class="project-tile"> block above and update the image src -->
+        </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section id="languages">
+        <h2>Coding Languages</h2>
+        <div class="lang-grid">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1822px-ISO_C%2B%2B_Logo.svg.png" alt="C++">
+            <img src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/267_Python_logo-512.png" alt="Python">
+            <img src="https://cdn0.iconfinder.com/data/icons/HTML5/512/HTML_Badge.png" alt="HTML+CSS">
+            <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/badge-css-3-512.png" alt="CSS">
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section id="social">
+        <h2>Connect With Me</h2>
+        <div class="social-links">
+            <!-- GitHub Link -->
+            <a href="https://github.com/CandyCrushers" target="_blank">
+                <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-social-github-256.png" alt="GitHub">
+            </a>
+            <!-- LinkedIn Link -->
+            <a href="https://www.linkedin.com/in/adam-kowalski-70239534b/" target="_blank">
+                <img src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-256.png" alt="LinkedIn">
+            </a>
+            <!-- CodeWars Link -->
+            <a href="https://www.codewars.com/users/D1Programmerr" target="_blank">
+                <img src="https://cdn4.iconfinder.com/data/icons/logos-brands-5/24/codewars-64.png" alt="CodeWars">
+            </a>
+            <!-- NOTE: Replace the src="images/..." with your own image files (e.g., github.png, linkedin.png, codewars.png) in the 'images' folder. Update the href attributes with your actual URLs. -->
+        </div>
+    </section>
+
+    <!-- Background Floating Elements -->
+    <canvas id="canvas"></canvas>
+
+    <script>
+        // Canvas Setup
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let floaters = [];
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initFloaters();
+        });
+
+        // Floater Class for Background Elements
+        class Floater {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 10 + 5;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.hue = Math.random() * 360; /* Random starting hue */
+                this.color = `hsl(${this.hue}, 50%, 50%)`;
+                this.interacted = false;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.hue += 1; /* Slowly shift hue for dynamic color */
+                this.color = `hsl(${this.hue % 360}, 50%, 50%)`;
+                if (this.x + this.size > canvas.width || this.x - this.size < 0) this.speedX *= -1;
+                if (this.y + this.size > canvas.height || this.y - this.size < 0) this.speedY *= -1;
+                if (this.interacted) {
+                    this.size += 2;
+                    if (this.size > 50) this.interacted = false;
+                } else if (this.size > 10) {
+                    this.size -= 0.5;
+                }
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        // Initialize Floaters
+        function initFloaters() {
+            floaters = [];
+            for (let i = 0; i < 20; i++) {
+                floaters.push(new Floater());
+            }
+        }
+
+        // Handle Click Interaction
+        canvas.addEventListener('click', (event) => {
+            const mouseX = event.x;
+            const mouseY = event.y;
+            floaters.forEach(floater => {
+                const dist = Math.hypot(floater.x - mouseX, floater.y - mouseY);
+                if (dist < floater.size + 20) {
+                    floater.interacted = true;
+                }
+            });
+        });
+
+        // Animation Loop
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            floaters.forEach(floater => {
+                floater.update();
+                floater.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        initFloaters();
+        animate();
+
+        // Scroll Animation
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        sections.forEach(section => observer.observe(section));
+
+        // Typing Effect
+        const text = "Hi, I'm Adam";
+        let index = 0;
+        const typedText = document.getElementById('typed-text');
+
+        function type() {
+            if (index < text.length) {
+                typedText.textContent += text.charAt(index);
+                index++;
+                setTimeout(type, 150); // Adjust speed here (100ms per character = ~3.4s total)
+            }
+        }
+
+        window.onload = function() {
+            type();
+
+            window.addEventListener('scroll', () => {
+                const scrollPos = window.scrollY;
+                document.querySelector('#welcome-section::before').style.backgroundPosition = `center ${scrollPos * 0.1}px`;
+            });
+            
+        };
+
+
+    </script>
+</body>
+    <div id="scroll-progress"></div>
+</html>
