@@ -332,21 +332,13 @@
         }
 
         #cursor {
-            display: inline-block;
-            font-weight: 100;
-            color: #00ccff; /* Bright cyan */
-            font-size: 3.5rem; /* Matches h1 default size */
-            line-height: 1;
-            margin-left: 2px;
-            animation: blink 2s infinite;
+        animation: blink 1s infinite;
         }
 
         @keyframes blink {
-            0%, 100% {opacity: 1;}
-            50% { opacity: 0;}
-            
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
-
         /* Background Floating Elements */
         canvas {
             position: fixed;
@@ -406,10 +398,11 @@
 
     <!-- Welcome Section -->
     <section id="welcome-section">
-        <h1><span id="typed-text"></span><span id="cursor">|</span></h1>
+        <div class="typing-wrapper">
+          <h1><span id="typed-text"></span><span id="cursor">|</span></h1>
+        </div>
         <p>Building the future, one line of code at a time.</p>
     </section>
-
     <!-- About Me Section -->
     <section id="about">
         <h2>About Me</h2>
