@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adam Kowalski | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
+        }
+
+        p {
+        font-family: 'Montserrat', sans-serif;
         }
 
         body {
@@ -123,6 +130,11 @@
             opacity: 0;
             transform: translateY(50px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            background: linear-gradient(135deg, #2a2a2a, #3a3a3a); /* Gradient gray */
+            border-radius: 15px; /* Curved edges */
+            margin: 2rem auto; /* Spacing from edges */
+            max-width: 1000px; /* Limit width for balance */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
         }
 
         #about.in-view {
@@ -132,11 +144,7 @@
 
         #about h2 {
             font-size: 2.5rem;
-            margin-bottom: 2rem;
-            background: linear-gradient(90deg, #00ccff, #fff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent
+            margin-bottom: 1rem;
         }
 
         #about p {
